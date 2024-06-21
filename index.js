@@ -91,3 +91,5 @@ var typedTechnologyStack4 = new Typed('.technology-stack4-update', technologySta
 var typedSkills = new Typed('.skill-update', skillsTypedConfig);
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
+
+document.getElementById("experience").innerHTML = new Date().getFullYear() - 2016;

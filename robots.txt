@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sm-dev.net/sitemap.xml
+Sitemap: https://www.sm-dev.net/sitemap.xml
