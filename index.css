@@ -70,6 +70,7 @@ body {
     line-height: var(--line-height-normal);
     background: var(--black);
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .row {
@@ -102,7 +103,7 @@ body {
 }
 
 section {
-    padding: var(--gutter-huge) 0;
+    padding: var(--gutter-medium) 0;
     border-bottom: var(--border-light);
 }
 
@@ -169,10 +170,6 @@ h3 {
     }
 }
 
-p {
-    margin: var(--gutter-small-1) 0;
-}
-
 @media(max-width: 900px) {
     p { 
         max-width: var(--container-small-width);
@@ -210,6 +207,7 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .btn {
+    margin-top: 40px;
     position: relative;
     display: inline-block;
     padding: 1rem 4.2rem;
@@ -335,6 +333,7 @@ body:not(.user-is-tabbing) a:focus {
     display: flex;
     justify-content: flex-end;
     padding: var(--gutter-normal) 0;
+    margin-bottom: 20px;
 }
 
 .nav__items {
@@ -344,6 +343,12 @@ body:not(.user-is-tabbing) a:focus {
 
 .nav__item:not(:last-child) {
     margin-right: var(--gutter-medium);
+}
+
+@media(max-width: 520px) {
+    .nav-recommends {
+        display: none;
+    }
 }
 
 @media(max-width: 500px) {
@@ -408,12 +413,6 @@ body:not(.user-is-tabbing) a:focus {
     font-size: var(--font-size-normal);
 }
 
-.header__text {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .header__text p {
     margin: 1.5rem 0 3.5rem;
     max-width: var(--container-medium-width);
@@ -448,12 +447,13 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .work__box:not(:last-child) {
-    margin-bottom: 25rem;
+    margin-bottom: 5rem;
+    border-bottom: #95a5aa 2px solid;
 }
 
 @media(max-width: 500px) {
     .work__box:not(:last-child) {
-        margin-bottom: 20rem;
+        margin-bottom: 2rem;
     }
 }
 
@@ -501,29 +501,152 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 /* --------------------------------------- */
-/* ----- Clients ----- */
+/* ----- Client recommendations ----- */
 /* --------------------------------------- */
 
-.client__logos {
+.company-text-visa {
+    color: #1b30f1;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.company-text-visa a {
+    color: #1b30f1;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.company-text-axamit {
+    color: #ef6030;
+    font-weight: bold;
+    font-family: serif;
+}
+.company-text-axamit a {
+    color: #ef6030;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.company-text-conexio {
+    color: #000;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.company-text-conexio a {
+    color: #000;
+    font-weight: bold;
+    font-family: serif;
+}
+
+.recommendation__container{
     display: flex;
-    justify-content: space-between;
-    filter: invert(100%) grayscale(100%) opacity(.8);
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.recommendation__container .recommendation {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    min-height: 400px;
+    min-width: 280px;
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #e5e5e6;
 }
 
-.client__logo {
-    height: 6.5rem;
-    max-width: 18rem;
+@media(max-width: 992px) {
+    .recommendation__container .recommendation {
+        min-height: 200px;
+    }
 }
 
-@media(max-width: 1240px) {
-    .client__logos {
-        overflow-x: scroll;
-        padding: var(--gutter-normal);
-    }
+.recommendation__container .recommendation .recommendation-header {
+    min-height: 80px;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
 
-    .client__logo:not(:last-of-type) {
-        margin-right: var(--gutter-medium);
-    }
+.recommendation__container .recommendation .recommendation-header .client-info {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.recommendation__container .recommendation .recommendation-header .client-info .client-image {
+    background: #fff;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    overflow: hidden;
+}
+
+.recommendation__container .recommendation .recommendation-header .client-info .client-name {
+    flex: 1 1 auto;
+}
+
+.recommendation__container .recommendation .recommendation-main-text {
+    flex: 1 1 auto;
+    border-bottom: 1px solid black;
+    color: black;
+    padding: 10px 0 10px 0px;
+}
+
+.recommendation-text {
+    text-indent: 20px;
+    text-align: justify;
+}
+
+.recommendation__container .recommendation .recommendation-company {
+    min-height: 20px;
+}
+
+.carousel {
+    width: 750px;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    width: 750px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.carousel-control.prev {
+    left: 0;
+}
+
+.carousel-control.next {
+    right: 0;
 }
 
 /* --------------------------------------- */
@@ -533,7 +656,7 @@ body:not(.user-is-tabbing) a:focus {
 .about__content {
     display: flex;
     flex-direction: row-reverse;
-    align-items: center;
+    align-items: flex-start;
 }
 
 @media(max-width: 900px) {
