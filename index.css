@@ -61,6 +61,11 @@ html {
         font-size: 52%;
     }
 }
+@media(min-width: 1000px) {
+    .btn {
+        width: auto !important;
+    }
+}
 
 body {
     font-size: var(--font-size-small);
@@ -207,6 +212,7 @@ body:not(.user-is-tabbing) a:focus {
 }
 
 .btn {
+    width: 204px;
     margin-top: 40px;
     position: relative;
     display: inline-block;
@@ -215,6 +221,7 @@ body:not(.user-is-tabbing) a:focus {
     color: inherit;
     border: 1px solid  var(--pink);
     font-weight: 400;
+    margin-right: 10px;
 }
 
 .btn:focus {
@@ -405,7 +412,7 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 .header {
-    background: url('./images/header.png');
+    background: url('./images/header.webp');
     height: 100vh;
     background-size: cover;
     background-position: center;
