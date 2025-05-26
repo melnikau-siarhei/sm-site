@@ -1,0 +1,20 @@
+.post-text {
+    margin-bottom: var(--gutter-small);
+}
+.post-image {
+    margin-bottom: var(--gutter-small);
+}
+p {
+    width: 100% important!;
+}
+.text-items {
+    margin-left: 60px;
+}
+.extra-bold {
+    font-weight: 800;
+}
+@media(max-width: 768px) {
+    .text-items {
+        margin-left: 20px;
+    }
+}
