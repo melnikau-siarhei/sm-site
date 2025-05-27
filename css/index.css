@@ -222,6 +222,7 @@ body:not(.user-is-tabbing) a:focus {
     border: 1px solid  var(--pink);
     font-weight: 400;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .btn:focus {
