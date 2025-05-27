@@ -1,0 +1,94 @@
+@card-gap: 24px;
+@img-height: 300px;
+
+.posts-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @card-gap;
+  justify-content: space-between;
+
+  // Styles for 3 cards in a row
+  & > .post-card {
+    flex: 1 1 calc((100% - 2 * @card-gap) / 3);
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+    align-items: stretch;
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    .post-image {
+      width: 100%;
+      height: @img-height;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      background: #eee;
+      display: block;
+    }
+
+    .post-title {
+      margin: 16px 16px 8px 16px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: darkblue;
+    }
+
+    .post-desc {
+      margin: 0 16px 16px 16px;
+      font-size: 1.5rem;
+      flex-grow: 1;
+      color: #000000cc;
+    }
+  }
+
+  // Styles if there are 2 cards - even alignment along the edges
+  &:has(> .post-card:nth-child(2):last-child) {
+    justify-content: space-between;
+  }
+
+  // Styles if there is one card - on the left edge
+  &:has(> .post-card:only-child) {
+    justify-content: flex-start;
+  }
+}
+
+// Adaptability
+@media (max-width: 1024px) {
+  .posts-container > .post-card {
+    flex: 1 1 calc((100% - @card-gap) / 2);
+    max-width: 100%;
+  }
+  .posts-container {
+    gap: 16px;
+  }
+  .posts-container > .post-card .post-image {
+    height: 230px;
+  }
+}
+
+@media (max-width: 600px) {
+  .posts-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .posts-container > .post-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .posts-container > .post-card .post-image {
+    height: 140px;
+  }
+}
