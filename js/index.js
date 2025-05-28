@@ -1,4 +1,4 @@
-let technologyStack1 = ["AEM 6.5+","AEM as Cloud service","Java","Apache Sling","OSGI (Apache Felix)","Apache Jackrabbit OAK","HTL(Sightly)","Sling Models","jQuery","JavaScript","GIT","Maven"];
+let technologyStack1 = ["AEM 6.5+","AEM as Cloud service","Java","Apache Sling","OSGI (Apache Felix)","Apache Jackrabbit OAK","HTL(Sightly)","Sling Models","Adobe EDS","jQuery","JavaScript","GIT","Maven"];
 
 let technologyStack2 = ["AEM 5.6 - AEM 6.5+","Java","Java EE","Apache Sling","OSGI (Apache Felix)","Apache Jackrabbit OAK","HTL(Sightly)","Sling Models","jQuery","JavaScript","GIT","Maven","Groovy","AEM Forms","AWS Lambda","Amazon Cognito","Ext JS"];
 
