@@ -1,5 +1,6 @@
 .post-text {
     margin-bottom: var(--gutter-small);
+    word-break: break-word;
 }
 .post-image {
     margin-bottom: var(--gutter-small);
