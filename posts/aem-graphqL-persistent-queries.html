@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="../images/favicon.png" />
+    <title>
+        GraphQL Persistent Queries | sm-dev.net
+    </title>
+    <meta name="description" content="AEM GraphQL Persistent Queries: what is it and how to use it? | sm-dev.net">
+    <meta name="keywords" content="aem, graphQL, sm-dev, sm-dev.net, sm, dev, net" />
+    <meta property="og:title" content="AEM GraphQL Persistent Queries" />
+    <meta property="og:description" content="AEM GraphQL Persistent Queries: what is it and how to use it? | sm-dev.net" />
+    <meta property="og:url" content="https://www.sm-dev.net/posts/aem-graphqL-persistent-queries" />
+    <meta property="og:image" content="https://www.sm-dev.net/images/favicon.png" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/post.css" />
+</head>
+<body>
+<header class="header" role="banner" id="top">
+    <div class="row">
+        <nav class="nav" role="navigation">
+            <ul class="nav__items">
+                <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="/posts" class="nav__link">Posts</a></li>
+                <li class="nav__item"><a href="#contact" class="nav__link">Get in touch</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header__text-box row">
+        <div class="header__text">
+            <h1 class="heading-primary">AEM GraphQL Persistent Queries</h1>
+            <p>What Is It and How to Use It?</p>
+            <a href="#post" class="btn btn--pink">Start reading</a>
+        </div>
+    </div>
+</header>
+<main role="main">
+    <section class="post" id="post">
+        <div class="row">
+            <h2>GraphQL in Adobe Experience Manager (AEM)</h2>
+            <div class="post-content">
+                <div class="post-text">
+                    Adobe Experience Manager (AEM) has embraced the headless CMS paradigm by providing robust GraphQL APIs. GraphQL in AEM enables developers to query and retrieve precisely the content they need from Content Fragments, supporting flexible and efficient content delivery for modern web and mobile applications. Unlike traditional REST APIs, GraphQL allows clients to specify their data requirements in a single request, reducing over-fetching and under-fetching of data.
+                </div>
+                <h3>Using GraphQL in AEM & Understanding Persistent Queries</h3>
+                <div class="post-text">
+                    Possibilities with AEM GraphQL:
+                    <ul class="text-items">
+                        <li class="text__item">Query structured content fragments stored in AEM.</li>
+                        <li class="text__item">Retrieve only the fields needed, optimizing payload size and response times.</li>
+                        <li class="text__item">Support for dynamic queries with variables, enabling flexible client-side data fetching.</li>
+                        <li class="text__item">Integration with modern front-end frameworks and static site generators.</li>
+                    </ul>
+                </div>
+                <h3>What Are GraphQL Persistent Queries?</h3>
+                <div class="post-text">
+                    Persistent Queries are a powerful feature in AEM that allows you to store predefined GraphQL queries on the server. Instead of sending the entire query from the client each time, clients can simply reference the stored query by name or identifier. This brings several advantages:
+                    <ul class="text-items">
+                        <li class="text__item"><span class="extra-bold">Cacheability:</span> Because persisted queries are executed via HTTP GET requests, their responses can be cached at the Dispatcher and CDN layers, dramatically improving performance compared to standard POST-based GraphQL requests, which are typically not cacheable.</li>
+                        <li class="text__item"><span class="extra-bold">Security:</span> By limiting which queries are available and hiding the full schema from public clients, you reduce the risk of exposing sensitive data or schema details.</li>
+                        <li class="text__item"><span class="extra-bold">Simplicity:</span> Clients only need to know the identifier of the query, reducing payload size and standardizing data access patterns.</li>
+                    </ul>
+                </div>
+                <h3>How to Create and Use Persistent Queries in AEM</h3>
+                <div class="post-text">
+                    <ul class="text-items">
+                        <li class="text__item">Enable Persistent Queries for your site configuration in AEM:
+                            Navigate to Tools > General > Configuration Browser, select your project, and ensure "GraphQL Persistent Queries" is enabled.
+                        </li>
+                    </ul>                    
+                </div>
+                <div class="post-image">
+                    <img src="../images/posts/graph-ql-image-2.webp" alt="Configuration Persistent Queries in AEM">
+                </div>
+                <div class="post-text">
+                    <ul class="text-items">
+                        <li class="text__item">Create and Persist a Query:
+                            The preferred method is using the GraphiQL IDE built into AEM, where you can write, test, and save queries directly.
+                        </li>
+                    </ul>
+                </div>
+                <div class="post-image">
+                    <img src="../images/posts/graph-ql-image-3.webp" alt="GraphiQL IDE built into AEM">
+                </div>
+                <div class="post-text">
+                    Alternatively, you can use a cURL command or tools like Postman to persist queries.
+                </div>
+                <div class="post-text">
+                    This stores the query under the specified configuration and label.
+                </div>
+                <h3>Executing a Persisted Query</h3>
+                <div class="post-text">
+                    Clients execute a persisted query with a simple GET request:
+                </div>
+                <div class="post-text">
+                    <span class="extra-bold">GET AEM_HOST/graphql/execute.json/Project-Config-Name/Persisted-Query-Name</span>
+                </div>
+                <div class="post-text">
+                    For example:
+                </div>
+                <div class="post-text">
+                    <span class="extra-bold">GET https://example.com/graphql/execute.json/wknd/plain-article-query</span>
+                </div>
+                <div class="post-text">
+                    To pass variables, append them to the URL:
+                </div>
+                <div class="post-text">
+                    <span class="extra-bold">GET AEM_HOST/graphql/execute.json/Project-Config-Name/Persisted-Query-Name;variable1=value1;variable2=value2</span>
+                </div>
+                <div class="post-text">
+                    For example:
+                </div>
+                <div class="post-text">
+                    <span class="extra-bold">GET https://example.com /graphql/execute.json/wknd/get-simple-article;apath=%2Fcontent%2Fdam%2Fmy-project%2Ftest-article</span>
+                </div>
+                <h3>Managing and Caching</h3>
+                <div class="post-text">
+                    Persisted queries are stored under /conf/site-name/settings/graphql/persistedQueries in the AEM repository.
+                </div>
+                <div class="post-image">
+                    <img src="../images/posts/graph-ql-image-4.webp" alt="Persisted queries in AEM repository">
+                </div>
+                <div class="post-text">
+                    You can configure cache headers (e.g., max-age, s-maxage) for each query, optimizing cache behavior at the browser, Dispatcher, and CDN layers.
+                </div>
+                <h3>So why use GraphQL persistent queries in AEM?</h3>
+                <div class="post-text">
+                    GraphQL Persistent Queries in AEM offer a best-practice approach for headless content delivery:
+                    <ul class="text-items">
+                        <li class="text__item">Performance: By enabling caching at multiple layers, they reduce server load and speed up content delivery.</li>
+                        <li class="text__item">Security: Restricting available queries minimizes the attack surface and prevents schema exposure.</li>
+                        <li class="text__item">Maintainability: Centralizing queries on the server simplifies client implementation and versioning.</li>
+                        <li class="text__item">Scalability: Efficient caching and reduced payloads support high-traffic, global applications.</li>
+                    </ul>
+                </div>
+                <div class="post-text">
+                    In summary, Persistent Queries are essential for any AEM headless implementation aiming for performance, security, and maintainability. They represent a key step in leveraging AEM’s GraphQL capabilities to deliver modern, scalable digital experiences.
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<section class="contact" id="contact">
+    <div class="row">
+        <h2>Get in Touch</h2>
+        <div class="contact__info">
+            <p>
+                To clarify any information you are interested in, feel free to contact me. I
+                will do my best to respond back. 😊 The quickest way to reach out to
+                me is via an email.
+            </p>
+            <div class="btn-container">
+                <a href="mailto:business@sm-dev.net" class="btn">business@sm-dev.net</a>
+                <a href="https://calendly.com/melnikaus/30min" class="btn" target="_blank">Schedule a meeting</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer role="contentinfo" class="footer">
+    <div class="row">
+        <ul class="footer__social-links">
+            <li class="footer__social-link-item">
+                <a href="https://www.sm-dev.net/posts/" title="Link to SM-dev posts">
+                    <img src="../images/post-icon.png" class="footer__social-image" alt="Posts">
+                </a>
+            </li>
+            <li class="footer__social-link-item">
+                <a href="https://www.credly.com/users/siarhei-melnikau" title="Link to Credly Profile" target="_blank">
+                    <img src="../images/credly.png" class="footer__social-image" alt="Credly">
+                </a>
+            </li>
+            <li class="footer__social-link-item">
+                <a href="https://www.linkedin.com/in/siarhei-melnikau-8366871a7/" target="_blank">
+                    <img src="../images/linkedin.png" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin">
+                </a>
+            </li>
+        </ul>
+        <ul class="footer__copy-rights">
+            <li class="footer__social-link-item">
+                Siarhei Melnikau ©<span id="year">2025</span>. All rights reserved.
+            </li>
+            <li class="footer__social-link-item">
+                Thanks <a href="https://mattboldt.com/">Matt Boldt</a> for typed animation script.
+            </li>
+        </ul>
+    </div>
+</footer>
+<a href="#top" class="back-to-top" title="Back to Top">
+    <img src="../images/arrow-up.png" alt="Back to Top" class="back-to-top__image"/>
+</a>
+<script src="../js/script.js"></script>
+</body>
+</html>

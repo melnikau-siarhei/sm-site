@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.sm-dev.net/</loc>
-        <lastmod>2025-04-02</lastmod>
+        <lastmod>2025-05-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -15,6 +15,12 @@
     <url>
         <loc>https://www.sm-dev.net/posts/edge-delivery-services-overview</loc>
         <lastmod>2025-05-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.sm-dev.net/posts/aem-graphqL-persistent-queries</loc>
+        <lastmod>2025-05-29</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
